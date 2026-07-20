@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "motion/react"
-import { Plus, Minus } from "lucide-react"
+import { Plus} from "lucide-react"
 
 const services = [
   {

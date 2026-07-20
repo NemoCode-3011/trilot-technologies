@@ -1,7 +1,5 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import logo1 from "../assets/logo1.png";
-import logo2 from "../assets/logo2.png";
 import logo3 from "../assets/logo3.png";
 
 const LoadingScreen = () => {
