@@ -105,11 +105,11 @@ const Hero = () => {
             initial={{ opacity: 0 }}
             animate={mounted ? { opacity: 1 } : {}}
             transition={{ duration: 0.5, delay: 0.6 }}
-            className="flex items-center gap-3 text-xl md:text-2xl font-heading"
+            className="flex items-center gap-3 text-3xl md:text-2xl font-heading"
             style={{ color: "#52525B" }}
           >
             <span>for</span>
-            <div className="relative h-8 overflow-hidden w-40 text-left">
+            <div className="relative h-8   w-40 text-left">
               <AnimatePresence mode="wait">
                 <motion.span
                   key={wordIndex}
