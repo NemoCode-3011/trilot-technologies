@@ -9,6 +9,7 @@ import Testimonials from "./sections/Testimonials"
 import About from "./sections/About"
 import CTA from "./sections/CTA"
 import Footer from "./components/Footer"
+import Marquee from "./sections/MarqueeBar"
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Navbar />
       <main>
         <Hero />
+        <Marquee/>
         <Stats />
         <Services />
         <Process />
