@@ -1,5 +1,7 @@
-import { FaInstagram, FaTwitter, FaLinkedin } from "react-icons/fa"
-import logoLight from "../assets/T-bg-image.png"
+import { FaInstagram, FaTwitter, FaLinkedin, FaWhatsapp } from "react-icons/fa"
+import logoLight from "../assets/trilot dark mode 3.png"
+import { IoIosMail } from "react-icons/io"
+import { FaLocationDot } from "react-icons/fa6"
 
 const Footer = () => {
   const links = [
@@ -19,7 +21,7 @@ const Footer = () => {
 
           {/* Col 1 — Brand */}
           <div className="flex flex-col gap-6">
-            <img src={logoLight} alt="Trilot Technologies" className="h-8 w-auto" />
+            <img src={logoLight} alt="Trilot Technologies" className="h-24 w-50 scale-150 " />
             <p className="text-sm leading-relaxed max-w-xs" style={{ color: "#52525B" }}>
               Designed for Business Growth. Strategic websites and digital experiences that help businesses grow.
             </p>
@@ -64,22 +66,22 @@ const Footer = () => {
             <div className="flex flex-col gap-3">
               
                <a href="mailto:hello@trilot.tech"
-                className="text-sm transition-colors hover:text-white"
+                className="text-sm transition-colors hover:text-white flex items-center gap-3"
                 style={{ color: "#71717A" }}
               >
-                hello@trilot.tech
+                <IoIosMail className="scale-150"/> hello@trilot.tech
               </a>
               
                 < a href="https://wa.me/2348149798764"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm transition-colors hover:text-white"
+                className="text-sm transition-colors hover:text-white flex gap-3 items-center"
                 style={{ color: "#71717A" }}
               >
-                WhatsApp
+               <FaWhatsapp className="scale-150"/> WhatsApp
               </a>
-              <p className="text-sm" style={{ color: "#71717A" }}>
-                Lagos, Nigeria
+              <p className="text-sm flex gap-3 items-center" style={{ color: "#71717A" }}>
+                <FaLocationDot className="scale-150"/> Lagos, Nigeria
               </p>
             </div>
           </div>

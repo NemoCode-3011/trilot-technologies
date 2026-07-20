@@ -1,5 +1,6 @@
 import { motion } from "motion/react"
 import { ArrowRight } from "lucide-react"
+import { FaWhatsapp } from "react-icons/fa";
 
 const CTA = () => {
   return (
@@ -59,7 +60,7 @@ const CTA = () => {
                 backgroundColor: "transparent"
               }}
             >
-              WhatsApp Us
+             <FaWhatsapp className="scale-150"/> WhatsApp Us
             </motion.a>
           </div>
 
