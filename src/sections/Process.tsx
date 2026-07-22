@@ -5,7 +5,7 @@ const steps = [
   {
     number: "01",
     title: "Discovery & Strategy",
-    description: "We start by understanding your business, your goals, and your customers. No assumptions — just the right questions to build a clear picture of what success looks like for you.",
+    description: "We start by understanding your business, your goals, and your target market. We make no assumptions — just the right questions to build a clear picture of what success looks like for you.",
   },
   {
     number: "02",

@@ -1,25 +1,25 @@
-import { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "motion/react"
-import { Menu, X } from "lucide-react"
-import logoLight from "../assets/trilot dark mode2.png"
-import logoDark from "../assets/T-bg-image.png"
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { Menu, X } from "lucide-react";
+import logoLight from "../assets/trilot dark mode2.png";
+import logoDark from "../assets/T-bg-image.png";
 
 const links = [
   { name: "Services", href: "#services" },
   { name: "Work", href: "#portfolio" },
   { name: "Process", href: "#process" },
   { name: "About", href: "#about" },
-]
+];
 
-const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false)
-  const [isOpen, setIsOpen] = useState(false)
+const Navbar = ({ onContactClick }: { onContactClick: () => void }) => {
+  const [scrolled, setScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50)
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <>
@@ -64,6 +64,7 @@ const Navbar = () => {
           {/* CTA + hamburger */}
           <div className="flex items-center gap-3">
             <a
+              onClick={onContactClick}
               href="#contact"
               className={`hidden md:block text-sm px-4 py-2 rounded-full transition-all duration-300 ${
                 scrolled
@@ -79,7 +80,11 @@ const Navbar = () => {
                 scrolled ? "text-text-primary" : "text-white"
               }`}
             >
-              {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {isOpen ? (
+                <X className="w-5 h-5" />
+              ) : (
+                <Menu className="w-5 h-5" />
+              )}
             </button>
           </div>
         </div>
@@ -116,7 +121,7 @@ const Navbar = () => {
         </AnimatePresence>
       </motion.div>
     </>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

@@ -9,7 +9,7 @@ const rotatingWords = [
   "businesses.",
 ];
 
-const Hero = () => {
+const Hero = ({ onContactClick }: { onContactClick: () => void }) => {
   const [mounted, setMounted] = useState(false);
   const [wordIndex, setWordIndex] = useState(0);
 
@@ -38,7 +38,7 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden"
+      className="relative h-screen min-h-175 flex items-center justify-center overflow-hidden"
       style={{ backgroundColor: "#09090B" }}
     >
       {/* Cursor glow */}
@@ -57,11 +57,11 @@ const Hero = () => {
       />
       {/* Blue glow */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full opacity-10 blur-3xl pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-125 h-125 rounded-full opacity-10 blur-3xl pointer-events-none"
         style={{ backgroundColor: "#2563EB" }}
       />
 
-      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center flex flex-col items-center gap-8 pt-24 pb-20">
+      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center flex flex-col items-center gap-8 pt-32 pb-20">
         {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -146,17 +146,15 @@ const Hero = () => {
           transition={{ duration: 0.6, delay: 0.9 }}
           className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto"
         >
-          <motion.a
-            href="https://wa.me/2348149798764?text=Hi%20Trilot%2C%20I%27d%20like%20to%20start%20a%20project"
-            target="_blank"
-            rel="noopener noreferrer"
+          <motion.button
+            onClick={onContactClick}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="w-full sm:w-auto px-6 py-3 rounded-full text-sm font-medium text-white text-center"
+            className="w-full sm:w-auto px-6 py-3 rounded-full text-sm font-medium text-white text-center cursor-pointer"
             style={{ backgroundColor: "#2563EB" }}
           >
             Start a Project →
-          </motion.a>
+          </motion.button>
           <motion.a
             href="#portfolio"
             whileHover={{ scale: 1.02 }}

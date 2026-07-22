@@ -1,8 +1,8 @@
-import { motion } from "motion/react"
-import { ArrowRight } from "lucide-react"
+import { motion } from "motion/react";
 import { FaWhatsapp } from "react-icons/fa";
+import { IoIosMail } from "react-icons/io"
 
-const CTA = () => {
+const CTA = ({ onContactClick }: { onContactClick: () => void }) => {
   return (
     <section
       id="contact"
@@ -33,22 +33,22 @@ const CTA = () => {
             className="text-base max-w-lg leading-relaxed"
             style={{ color: "#71717A" }}
           >
-            Tell us about your project and we'll get back to you within 24 hours. No commitment, no pressure — just an honest conversation.
+            Tell us about your project and we'll get back to you within 24
+            hours. No commitment, no pressure — just an honest conversation.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center gap-4">
-            <motion.a
-              href="mailto:hello@trilot.tech"
+            <motion.button
+              onClick={onContactClick}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="flex items-center gap-2 px-8 py-4 rounded-full text-sm font-medium text-white transition-all duration-300"
+              className="w-full sm:w-auto px-6 py-3 rounded-full text-sm font-medium text-white text-center cursor-pointer"
               style={{ backgroundColor: "#2563EB" }}
             >
-              Start a Project
-              <ArrowRight className="w-4 h-4" />
-            </motion.a>
+              Start a Project →
+            </motion.button>
             <motion.a
-              href="https://wa.me/2348149798764"
+              href="mailto:hello@trilot.tech"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.02 }}
@@ -57,23 +57,20 @@ const CTA = () => {
               style={{
                 borderColor: "#27272A",
                 color: "#A1A1AA",
-                backgroundColor: "transparent"
+                backgroundColor: "transparent",
               }}
             >
-             <FaWhatsapp className="scale-150"/> WhatsApp Us
+              <IoIosMail className="scale-150" /> Send Us An Email
             </motion.a>
           </div>
 
-          <p
-            className="text-xs"
-            style={{ color: "#3F3F46" }}
-          >
+          <p className="text-xs" style={{ color: "#3F3F46" }}>
             We typically respond within 24 hours.
           </p>
         </motion.div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default CTA
+export default CTA;

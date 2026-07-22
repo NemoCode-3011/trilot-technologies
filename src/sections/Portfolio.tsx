@@ -1,15 +1,17 @@
-import { motion } from "motion/react"
-import { ArrowUpRight } from "lucide-react"
-import deprime from "../assets/deprime.png"
-import orita from "../assets/orita.png"
-import arcadia from "../assets/arcadia.png"
+import { motion } from "motion/react";
+import { ArrowUpRight } from "lucide-react";
+import deprime from "../assets/deprime.png";
+import orita from "../assets/orita.png";
+import arcadia from "../assets/arcadia.png";
+import { Link } from "react-router-dom";
 
 const projects = [
   {
     id: 1,
     title: "De-Prime Barbers",
     category: "Landing Page",
-    description: "A premium barbershop landing page built with React, TypeScript and Tailwind CSS. Black, white and gold palette with smooth animations.",
+    description:
+      "A premium barbershop landing page built with React, TypeScript and Tailwind CSS. Black, white and gold palette with smooth animations.",
     image: deprime,
     url: "https://de-prime-barbers.vercel.app",
     tags: ["React", "TypeScript", "Tailwind CSS"],
@@ -18,7 +20,8 @@ const projects = [
     id: 2,
     title: "Oríta Fine Dining",
     category: "Multi-page Website",
-    description: "A Nigerian/Continental fusion restaurant website with a full menu page, reservations form, and cinematic loading screen.",
+    description:
+      "A Nigerian/Continental fusion restaurant website with a full menu page, reservations form, and cinematic loading screen.",
     image: orita,
     url: "https://orita-fine-dining.vercel.app/",
     tags: ["React", "TypeScript", "Framer Motion"],
@@ -27,12 +30,13 @@ const projects = [
     id: 3,
     title: "Arcadia Homes",
     category: "Web Application",
-    description: "A full-stack real estate platform with role-based access control, property listings, agent dashboard and authentication.",
+    description:
+      "A full-stack real estate platform with role-based access control, property listings, agent dashboard and authentication.",
     image: arcadia,
     url: "https://arcadia-homes-wvni.vercel.app/",
     tags: ["React", "TypeScript", "Supabase"],
   },
-]
+];
 
 const Portfolio = () => {
   return (
@@ -42,7 +46,6 @@ const Portfolio = () => {
       style={{ backgroundColor: "#FAFAFA" }}
     >
       <div className="max-w-5xl mx-auto px-6 md:px-8">
-
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -66,17 +69,16 @@ const Portfolio = () => {
               <br />
               proud of.
             </h2>
-            
-              <a href="#contact"
+            <Link
+              to="/work"
               className="text-sm font-medium flex items-center gap-1 hover:gap-2 transition-all duration-300 w-fit"
               style={{ color: "#2563EB" }}
             >
-              Start your project
+              View Our Works
               <ArrowUpRight className="w-4 h-4" />
-            </a>
+            </Link>
           </div>
         </motion.div>
-
         {/* Projects */}
         <div className="flex flex-col gap-16">
           {projects.map((project, index) => (
@@ -99,9 +101,18 @@ const Portfolio = () => {
                   style={{ backgroundColor: "#F4F4F5", borderColor: "#E4E4E7" }}
                 >
                   <div className="flex gap-1.5">
-                    <div className="w-3 h-3 rounded-full" style={{ backgroundColor: "#EF4444" }} />
-                    <div className="w-3 h-3 rounded-full" style={{ backgroundColor: "#F59E0B" }} />
-                    <div className="w-3 h-3 rounded-full" style={{ backgroundColor: "#22C55E" }} />
+                    <div
+                      className="w-3 h-3 rounded-full"
+                      style={{ backgroundColor: "#EF4444" }}
+                    />
+                    <div
+                      className="w-3 h-3 rounded-full"
+                      style={{ backgroundColor: "#F59E0B" }}
+                    />
+                    <div
+                      className="w-3 h-3 rounded-full"
+                      style={{ backgroundColor: "#22C55E" }}
+                    />
                   </div>
                   <div
                     className="flex-1 mx-4 px-3 py-1 rounded text-xs text-center"
@@ -109,13 +120,17 @@ const Portfolio = () => {
                   >
                     {project.url.replace("https://", "")}
                   </div>
-                  
-                    <a href={project.url}
+
+                  <a
+                    href={project.url}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   >
-                    <ArrowUpRight className="w-4 h-4" style={{ color: "#71717A" }} />
+                    <ArrowUpRight
+                      className="w-4 h-4"
+                      style={{ color: "#71717A" }}
+                    />
                   </a>
                 </div>
 
@@ -132,7 +147,11 @@ const Portfolio = () => {
                 <motion.div
                   initial={{ scaleY: 1 }}
                   whileInView={{ scaleY: 0 }}
-                  transition={{ duration: 0.8, ease: "easeInOut", delay: index * 0.1 }}
+                  transition={{
+                    duration: 0.8,
+                    ease: "easeInOut",
+                    delay: index * 0.1,
+                  }}
                   viewport={{ once: true }}
                   className="absolute inset-0 origin-top"
                   style={{ backgroundColor: "#FAFAFA" }}
@@ -163,8 +182,9 @@ const Portfolio = () => {
                     {project.description}
                   </p>
                 </div>
-                
-                  <a href={project.url}
+
+                <a
+                  href={project.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-full border transition-all duration-300 hover:bg-accent hover:text-white hover:border-dark w-fit shrink-0"
@@ -177,10 +197,9 @@ const Portfolio = () => {
             </motion.div>
           ))}
         </div>
-
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Portfolio
+export default Portfolio;

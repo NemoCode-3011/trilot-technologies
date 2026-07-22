@@ -1,34 +1,32 @@
-import LoadingScreen from "./components/LoadingScreen"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import Home from "./pages/Home"
+import Work from "./pages/Work"
+import DePrime from "./pages/works/DePrime"
+import Orita from "./pages/works/Orita"
+import Arcadia from "./pages/works/Arcadia"
 import Navbar from "./components/Navbar"
-import Hero from "./sections/Hero"
-import Stats from "./sections/Stats"
-import Services from "./sections/Services"
-import Process from "./sections/Process"
-import Portfolio from "./sections/Portfolio"
-import Testimonials from "./sections/Testimonials"
-import About from "./sections/About"
-import CTA from "./sections/CTA"
 import Footer from "./components/Footer"
-import Marquee from "./sections/MarqueeBar"
+import LoadingScreen from "./components/LoadingScreen"
+import ContactModal from "./components/ContactModal"
+import { useState } from "react"
 
 function App() {
+  const [modalOpen, setModalOpen] = useState(false)
+
   return (
-    <>
+    <BrowserRouter>
       <LoadingScreen />
-      <Navbar />
-      <main>
-        <Hero />
-        <Marquee/>
-        <Stats />
-        <Services />
-        <Process />
-        <Portfolio />
-        <Testimonials />
-        <About />
-        <CTA />
-      </main>
+      <ContactModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
+      <Navbar onContactClick={() => setModalOpen(true)} />
+      <Routes>
+        <Route path="/" element={<Home onContactClick={() => setModalOpen(true)} />} />
+        <Route path="/work" element={<Work />} />
+        <Route path="/work/de-prime" element={<DePrime />} />
+        <Route path="/work/orita" element={<Orita />} />
+        <Route path="/work/arcadia" element={<Arcadia />} />
+      </Routes>
       <Footer />
-    </>
+    </BrowserRouter>
   )
 }
 
