@@ -20,7 +20,7 @@
   --font-body: "DM Sans", sans-serif;
 }
 
-html {
+* {
   scroll-behavior: smooth;
 }
 
@@ -31,13 +31,19 @@ body {
   margin: 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
 }
 
 .scrollbar-none {
   scrollbar-width: none;
 }
+
 .scrollbar-none::-webkit-scrollbar {
   display: none;
 }
