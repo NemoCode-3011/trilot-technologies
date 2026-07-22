@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from "motion/react";
 import { Menu, X } from "lucide-react";
 import logoLight from "../assets/trilot dark mode2.png";
 import logoDark from "../assets/T-bg-image.png";
-import { Link, useLocation } from "react-router-dom";
 
 const links = [
   { name: "Services", href: "/#services" },
