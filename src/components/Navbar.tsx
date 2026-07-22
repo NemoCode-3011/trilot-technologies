@@ -6,7 +6,7 @@ import logoDark from "../assets/T-bg-image.png";
 
 const links = [
   { name: "Services", href: "/#services" },
-  { name: "Work", href: "/#work" },
+  { name: "Work", href: "/#portfolio" },
   { name: "Process", href: "/#process" },
   { name: "About", href: "/#about" },
 ];
