@@ -3,12 +3,13 @@ import { motion, AnimatePresence } from "motion/react";
 import { Menu, X } from "lucide-react";
 import logoLight from "../assets/trilot dark mode2.png";
 import logoDark from "../assets/T-bg-image.png";
+import { Link, useLocation } from "react-router-dom";
 
 const links = [
-  { name: "Services", href: "#services" },
-  { name: "Work", href: "#portfolio" },
-  { name: "Process", href: "#process" },
-  { name: "About", href: "#about" },
+  { name: "Services", href: "/#services" },
+  { name: "Work", href: "/work" },
+  { name: "Process", href: "/#process" },
+  { name: "About", href: "/#about" },
 ];
 
 const Navbar = ({ onContactClick }: { onContactClick: () => void }) => {
