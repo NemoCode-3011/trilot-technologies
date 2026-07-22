@@ -1,5 +1,4 @@
 import { motion } from "motion/react";
-import { FaWhatsapp } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io"
 
 const CTA = ({ onContactClick }: { onContactClick: () => void }) => {
