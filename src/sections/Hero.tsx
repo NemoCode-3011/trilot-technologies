@@ -1,138 +1,85 @@
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
+import { Link } from "react-router-dom";
 
-const rotatingWords = [
-  "restaurants.",
-  "barbershops.",
-  "real estate.",
-  "startups.",
-  "businesses.",
-];
+const headline = ["We Build Digital", "Experiences That", "Convert."];
 
 const Hero = ({ onContactClick }: { onContactClick: () => void }) => {
   const [mounted, setMounted] = useState(false);
-  const [wordIndex, setWordIndex] = useState(0);
 
   useEffect(() => {
-    const timer = setTimeout(() => setMounted(true), 500);
-    return () => clearTimeout(timer);
-  }, []);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setWordIndex((prev) => (prev + 1) % rotatingWords.length);
-    }, 2000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
+    const timer = setTimeout(() => setMounted(true), 5000);
+    return () => clearTimeout(timer)
+    setMounted(true);
+    console.log(mounted);
+  }, [mounted]);
 
   return (
     <section
       id="hero"
-      className="relative h-screen min-h-175 flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6"
       style={{ backgroundColor: "#09090B" }}
     >
-      {/* Cursor glow */}
-      <motion.div
-        className="absolute w-64 h-64 rounded-full pointer-events-none blur-3xl opacity-20"
-        style={{
-          backgroundColor: "#2563EB",
-          left: mousePosition.x - 128,
-          top: mousePosition.y - 128,
-        }}
-        animate={{
-          left: mousePosition.x - 128,
-          top: mousePosition.y - 128,
-        }}
-        transition={{ type: "spring", damping: 30, stiffness: 200 }}
-      />
-      {/* Blue glow */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-125 h-125 rounded-full opacity-10 blur-3xl pointer-events-none"
+        className="absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage: `linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)`,
+          backgroundSize: "80px 80px",
+        }}
+      />
+      <div
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-200 h-75 blur-[120px] opacity-10 pointer-events-none"
         style={{ backgroundColor: "#2563EB" }}
       />
-
-      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center flex flex-col items-center gap-8 pt-32 pb-20">
-        {/* Badge */}
+      <div className="relative z-10 max-w-6xl mx-auto w-full flex flex-col items-center text-center gap-10 pt-24">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={mounted ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="flex items-center gap-2 px-4 py-2 rounded-full border text-xs uppercase tracking-widest"
+          className="flex items-center gap-3 px-4 py-2 rounded-full border mt-10"
           style={{
-            borderColor: "rgba(37, 99, 235, 0.3)",
-            backgroundColor: "rgba(37, 99, 235, 0.08)",
-            color: "#60A5FA",
+            borderColor: "#27272A",
+            backgroundColor: "rgba(255,255,255,0.02)",
           }}
         >
-          Designed for Business Growth.
+          <div className="flex items-center gap-0.5">
+            {[...Array(5)].map((_, i) => (
+              <span key={i} style={{ color: "#F59E0B", fontSize: "11px" }}>
+                ★
+              </span>
+            ))}
+          </div>
+          <span className="text-xs" style={{ color: "#52525B" }}>
+            Trusted by businesses across Nigeria
+          </span>
         </motion.div>
-
-        {/* Headline */}
-        <div className="flex flex-col items-center gap-4">
-          {/* Instead of y: "100%" use opacity + y */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={mounted ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-            className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold leading-tight"
-            style={{ color: "#FAFAFA" }}
-          >
-            Your Business,
-          </motion.h1>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={mounted ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.35, ease: "easeOut" }}
-            className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold leading-tight"
-            style={{ color: "#2563EB" }}
-          >
-            Elevated Online.
-          </motion.h1>
-
-          {/* Rotating words line */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={mounted ? { opacity: 1 } : {}}
-            transition={{ duration: 0.5, delay: 0.6 }}
-            className="flex items-center gap-3 text-3xl md:text-2xl font-heading"
-            style={{ color: "#52525B" }}
-          >
-            <span>for</span>
-            <div className="relative h-8   w-40 text-left">
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={wordIndex}
-                  initial={{ y: "100%", opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: "-100%", opacity: 0 }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
-                  className="absolute"
-                  style={{ color: "#FAFAFA" }}
-                >
-                  {rotatingWords[wordIndex]}
-                </motion.span>
-              </AnimatePresence>
+        <div className="flex flex-col items-center gap-0">
+          {headline.map((line, i) => (
+            <div key={line} className="overflow-hidden">
+              <motion.h1
+                initial={{ y: "100%" }}
+                animate={mounted ? { y: 0 } : {}}
+                transition={{
+                  duration: 0.9,
+                  delay: 0.2 + i * 0.12,
+                  ease: "easeOut",
+                }}
+                className="font-heading font-bold leading-[0.95] tracking-tight"
+                style={{
+                  fontSize: "clamp(52px, 8.5vw, 130px)",
+                  color: i === headline.length - 1 ? "#2563EB" : "#FAFAFA",
+                }}
+              >
+                {line}
+              </motion.h1>
             </div>
-          </motion.div>
+          ))}
         </div>
-
-        {/* Subtext */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={mounted ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.7 }}
-          className="text-base leading-relaxed max-w-xl"
+          className="text-base md:text-lg leading-relaxed max-w-xl"
           style={{ color: "#71717A" }}
         >
           We partner with ambitious businesses to create strategic digital
@@ -144,32 +91,47 @@ const Hero = ({ onContactClick }: { onContactClick: () => void }) => {
           initial={{ opacity: 0, y: 20 }}
           animate={mounted ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.9 }}
-          className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto"
+          className="flex flex-col sm:flex-row items-center gap-4"
         >
           <motion.button
             onClick={onContactClick}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="w-full sm:w-auto px-6 py-3 rounded-full text-sm font-medium text-white text-center cursor-pointer"
+            className="px-8 py-3.5 rounded-full text-sm font-medium text-white cursor-pointer"
             style={{ backgroundColor: "#2563EB" }}
           >
             Start a Project →
           </motion.button>
-          <motion.a
-            href="#portfolio"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="w-full sm:w-auto px-6 py-3 rounded-full text-sm font-medium border text-center"
-            style={{
-              borderColor: "rgba(255,255,255,0.1)",
-              color: "#A1A1AA",
-              backgroundColor: "rgba(255,255,255,0.05)",
-            }}
-          >
-            View Our Work
-          </motion.a>
+          <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+            <Link
+              to="/work"
+              className="px-8 py-3.5 rounded-full text-sm font-medium border block"
+              style={{
+                borderColor: "#27272A",
+                color: "#A1A1AA",
+                backgroundColor: "transparent",
+              }}
+            >
+              View Our Work
+            </Link>
+          </motion.div>
         </motion.div>
       </div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={mounted ? { opacity: 1 } : {}}
+        transition={{ duration: 0.6, delay: 1.5 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+      >
+        <motion.div
+          animate={{ y: [0, 6, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity }}
+          className="w-px h-8"
+          style={{ backgroundColor: "#27272A" }}
+        />
+      </motion.div>
     </section>
   );
 };

@@ -10,6 +10,7 @@ import LoadingScreen from "./components/LoadingScreen";
 import ContactModal from "./components/ContactModal";
 import Scrolltotop from "./components/ScrollToTop";
 import { useState } from "react";
+import SmoothScroll from "./components/SmoothScroll"
 
 function App() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -18,6 +19,7 @@ function App() {
     <BrowserRouter>
       <LoadingScreen />
       <Scrolltotop />
+       <SmoothScroll>
       <ContactModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
       <Navbar onContactClick={() => setModalOpen(true)} />
       <Routes>
@@ -31,6 +33,7 @@ function App() {
         <Route path="/work/arcadia" element={<Arcadia />} />
       </Routes>
       <Footer />
+      </SmoothScroll>
     </BrowserRouter>
   );
 }

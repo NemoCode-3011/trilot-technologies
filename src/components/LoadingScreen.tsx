@@ -11,7 +11,6 @@ const LoadingScreen = () => {
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
-    // Start typing after T mark draws (1.2s)
     const typingStart = setTimeout(() => {
       let i = 0;
       intervalRef.current = setInterval(() => {
@@ -20,7 +19,6 @@ const LoadingScreen = () => {
           i++;
         } else {
           if (intervalRef.current) clearInterval(intervalRef.current);
-          // Show "technologies" after typing done
           setTimeout(() => setShowTech(true), 400);
         }
       }, 120);
